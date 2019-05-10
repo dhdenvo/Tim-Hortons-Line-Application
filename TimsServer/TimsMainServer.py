@@ -20,11 +20,11 @@ amount_in_line = len(response['classified'])
 img_time = "Date: " + img_time.strftime("%a, %b %d, %Y") + " & Time: " + img_time.strftime("%I:%M:%S %p")
 server_data = "Number Of People: %d & " % amount_in_line + img_time
 
-server_url = "http://127.0.0.1:5000/" + server_data
-server_req = requests.put(url = server_url)
-print(server_req)
-print(json.loads(server_req.text))
-print(server_url)
+server_url = "http://127.0.0.1:5000/data"
+server_req = requests.put(url = server_url, params={"data": server_data})
+#print(server_req)
+#print(json.loads(server_req.text))
+#print(server_url)
 
 
 
