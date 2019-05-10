@@ -18,6 +18,7 @@ class User(Resource):
         return data
     
     def put(self, data):
+        #data = request.get_json(force=True)
         server_data = open(server_file, 'w')  
         server_data.write(data)
         server_data.close()
@@ -30,4 +31,5 @@ class User(Resource):
         pass
 
 api.add_resource(User, "/<string:data>")
+#api.add_resource(User, "/")
 app.run(debug=True)
