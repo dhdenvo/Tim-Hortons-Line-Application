@@ -10,6 +10,10 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.camera import Camera
 import time
+import cv2
+from kivy.graphics.fbo import Fbo
+import requests
+import json
 
 class MyApp(App):
     def build(self):
@@ -85,18 +89,30 @@ class MyApp(App):
         return self.sm
 
     def change(self,request, result):
-        self.people.text, self.wait.text = result.split(" ")
+        r = result.split(" ")
+        self.people.text, self.wait.text = r[3], r[12]+" "+r[13]
+
+    def powerai(self,request, result):
+        print("In the reference")
+        print(result)
 
     def update(self, instance=None):
-        req = UrlRequest('http://127.0.0.1:5000/d', on_success=self.change)
+        req = UrlRequest('http://127.0.0.1:5000/data', on_success=self.change)
 
     def crowdSource(self, instance):
         self.sm.current = 'camera'
 
+    def dumb(self,request, result):
+        print('dumb')
+        print(request, result)
+
     def snap(self, instance):
-        self.cam.export_to_png("IMG_{}.png".format(timestr))
-        print("Click")
-        # self.sm.current = 'main'
+        img = "PowerAiVisionInferenceImage.png"
+        self.cam.export_to_png(img)
+        file = open(img, 'rb')
+        requests.post("http://127.0.0.1:5000/data",files={"files":(img,file)},verify=False)
+        self.update()
+        self.sm.current = 'main'
 
 
 if __name__ == "__main__":
