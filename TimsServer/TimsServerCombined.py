@@ -54,6 +54,7 @@ class User(Resource):
         server_data = "Number Of People: %d & " % amount_in_line + img_time
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
+        return server_data
     
 #Runs the rest api application
 api.add_resource(User, "/data")
