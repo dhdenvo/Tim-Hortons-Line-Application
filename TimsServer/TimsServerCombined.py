@@ -50,7 +50,7 @@ class User(Resource):
         #Checks the amount of people in the line
         amount_in_line = len(response['classified'])
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
-        img_time = img_time.strftime("%I:%M:%S %p")
+        img_time = img_time.strftime("%I:%M %p")
         server_data = "%d," % amount_in_line + img_time
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
