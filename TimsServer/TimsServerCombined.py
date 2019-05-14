@@ -43,7 +43,7 @@ class User(Resource):
     #Run when recieve a post rest api call
     def post(self):
         #Grabs the time when the post call is made
-        img_time = datetime.datetime.now()         
+        img_time = datetime.datetime.now()      
         #Sends an api call to AI Vision
         req = requests.post(url = api_url, files=request.files, verify=False)       
         response = json.loads(req.text)
@@ -57,4 +57,4 @@ class User(Resource):
     
 #Runs the rest api application
 api.add_resource(User, "/data")
-app.run(debug=True)
+app.run(host='0.0.0.0', port=8286, debug=True)
