@@ -2,7 +2,7 @@ import json
 import requests
 import datetime
 
-api_url = "http://drv-ctp6.canlab.ibm.com/:5000/data"
+api_url = "http://drv-ctp6.canlab.ibm.com:5000/data"
 get = False
 
 if (get):
