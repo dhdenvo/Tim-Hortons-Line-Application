@@ -57,4 +57,4 @@ class User(Resource):
     
 #Runs the rest api application
 api.add_resource(User, "/data")
-app.run(host='0.0.0.0', port=8286, debug=True)
+app.run(host='0.0.0.0', debug=True)
