@@ -1,13 +1,17 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 from flask import request
+from flask_cors import CORS
+from flask_cors import cross_origin
 import json
 import datetime
 import requests
 
 #Defining The API Application
 app = Flask(__name__)
+cors = CORS(app, origins="http://localhost:1234")
 api = Api(app)
+
 
 #Server information
 server_file = "server_data.dat"
