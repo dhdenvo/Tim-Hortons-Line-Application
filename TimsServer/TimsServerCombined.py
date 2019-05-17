@@ -6,10 +6,11 @@ from flask_cors import cross_origin
 import json
 import datetime
 import requests
+import base64
 
 #Defining The API Application
 app = Flask(__name__)
-cors = CORS(app, origins="http://localhost:1234")
+cors = CORS(app, origins="*")
 api = Api(app)
 
 
@@ -17,6 +18,7 @@ api = Api(app)
 server_file = "server_data.dat"
 api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa-46bb-994f-f438cddb212e"
 server_url = "http://127.0.0.1:5000/data"
+
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -47,11 +49,31 @@ class User(Resource):
     #Run when recieve a post rest api call
     def post(self):
         #Grabs the time when the post call is made
-        img_time = datetime.datetime.now()      
+        img_time = datetime.datetime.now()
+
+	#Get the values from the request
+	val = list(request.values.values())
+
+        #Compensate for any missing padding
+        #Should not be required anymore but still good to keep to be safe
+	pad = 4 - (len(val[0]) % 4)
+	if pad == 4:
+		pad = 0
+	
+	#Decodes the image with base 64	
+	image = base64.b64decode(val[0] + "=" * pad)
+	files = {"files": ('image.jpg', image)}
+	
+	#Save the photo (comment out normally)
+	'''f = open("image.jpg", "wb")
+	f.write(image)
+	f.close()'''
+
         #Sends an api call to AI Vision
-        req = requests.post(url = api_url, files=request.files, verify=False)       
+        req = requests.post(url = api_url, files=files, verify=False)       
         response = json.loads(req.text)
-        #Checks the amount of people in the line
+        
+	#Checks the amount of people in the line
         amount_in_line = len(response['classified'])
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
         img_time = img_time.strftime("%I:%M %p")
@@ -63,3 +85,4 @@ class User(Resource):
 #Runs the rest api application
 api.add_resource(User, "/data")
 app.run(host='0.0.0.0', debug=True)
+#app.run(debug=True)
