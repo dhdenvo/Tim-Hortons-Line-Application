@@ -40,14 +40,13 @@ function getData() {
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			line = this.responseText.split(',')[0];
-			line = line.substring(1, line.length);
 			time = this.responseText.split(',')[1];
 			time = time.substring(0, time.length - 2);
 			document.getElementById("line").innerHTML = line;
 			document.getElementById("time").innerHTML = time;
 		}
 	};
-	xhttp.open("GET", "http://localhost:5000/data", true);
+	xhttp.open("GET", "server_data.dat", true);
 	xhttp.send();
 }
 
