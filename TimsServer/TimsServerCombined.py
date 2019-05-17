@@ -18,7 +18,8 @@ api = Api(app)
 server_file = "server_data.dat"
 api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa-46bb-994f-f438cddb212e"
 server_url = "http://127.0.0.1:5000/data"
-
+website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
+website = True
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -44,6 +45,11 @@ class User(Resource):
         server_data = open(server_file, 'w')  
         server_data.write(data)
         server_data.close()
+	#Writes the arguments to the server file for the website
+	if website:
+		server_data = open(website_server_file, 'w')  
+		server_data.write(data)
+		server_data.close()
         return data
     
     #Run when recieve a post rest api call
