@@ -34,7 +34,7 @@ class User(Resource):
         data = server_data.read()
         server_data.close()
         return data
-    
+
     #Run when recieve a put rest api call
     #Writes the call arguments to the server file    
     def put(self):
@@ -45,41 +45,41 @@ class User(Resource):
         server_data = open(server_file, 'w')  
         server_data.write(data)
         server_data.close()
-	#Writes the arguments to the server file for the website
-	if website:
-		server_data = open(website_server_file, 'w')  
-		server_data.write(data)
-		server_data.close()
+        #Writes the arguments to the server file for the website
+        if website:
+            server_data = open(website_server_file, 'w')  
+            server_data.write(data)
+            server_data.close()
         return data
-    
+
     #Run when recieve a post rest api call
     def post(self):
         #Grabs the time when the post call is made
         img_time = datetime.datetime.now()
 
-	#Get the values from the request
-	val = list(request.values.values())
+        #Get the values from the request
+        val = list(request.values.values())
 
         #Compensate for any missing padding
         #Should not be required anymore but still good to keep to be safe
-	pad = 4 - (len(val[0]) % 4)
-	if pad == 4:
-		pad = 0
-	
-	#Decodes the image with base 64	
-	image = base64.b64decode(val[0] + "=" * pad)
-	files = {"files": ('image.jpg', image)}
-	
-	#Save the photo (comment out normally)
-	'''f = open("image.jpg", "wb")
+        pad = 4 - (len(val[0]) % 4)
+        if pad == 4:
+            pad = 0
+
+        #Decodes the image with base 64	
+        image = base64.b64decode(val[0] + "=" * pad)
+        files = {"files": ('image.jpg', image)}
+
+        #Save the photo (comment out normally)
+        '''f = open("image.jpg", "wb")
 	f.write(image)
 	f.close()'''
 
         #Sends an api call to AI Vision
         req = requests.post(url = api_url, files=files, verify=False)       
         response = json.loads(req.text)
-        
-	#Checks the amount of people in the line
+
+        #Checks the amount of people in the line
         amount_in_line = len(response['classified'])
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
         img_time = img_time.strftime("%I:%M %p")
@@ -87,7 +87,7 @@ class User(Resource):
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
         return server_data
-    
+
 #Runs the rest api application
 api.add_resource(User, "/data")
 app.run(host='0.0.0.0', debug=True)
