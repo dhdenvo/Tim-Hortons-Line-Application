@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<head>
+  <title>Systems Launchpad</title>
+  <link rel="shortcut icon" type="image/x-icon" href="sysicon.png">
+  <link rel="apple-touch-icon" href="http://drive.google.com/uc?export=view&id=10QHeC2Ns1fVcPitwuIHiPDYHz0wWAd7u">
+
+<style>
+@media only screen and (device-width: 768px) {
+	.container {
+		font-size: 160%;
+	}
+
+	.container img {
+		width: 5%;
+		height: auto;
+	}
+}
+
+table, th, td {
+    border-style: groove;
+    width: 348px;
+}
+.mini {
+	border-width: 1px;
+	width: 94%;
+	font-size: 94%;
+}
+body{
+	background-color: #2F4F4F;
+} 
+.container{
+	background-color: #b0e0e6;
+}
+.top {
+	background-color: #388E8E;
+}
+table{
+	background-color: #D1EEEE;
+}
+.wrapper {
+    text-align: center;
+}
+.instructions_ipad {
+	width: 412px;
+}
+
+</style>
+</head>
+<div class='container'>
+<body onload="iOSSafariCheck(98)">
+
+<!-- Used for swapping the tables so it looks like the page is openning
+up a new page, but its just hiding and unhiding tables. -->
+<script>
+function hideTable(tableName) {
+	if (tableName == 95){
+		hideTable(99)
+		hideTable(93)
+		hideTable(147)
+		hideTable(148)
+	} else if (tableName == 94) {
+		hideTable(96)
+		hideTable(92)
+		hideTable(147)
+		hideTable(148)
+	} else {
+		var x = document.getElementById(tableName.toString());
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+}
+function swapTables(tableNameOne, tableNameTwo) {
+	hideTable(tableNameOne)
+	hideTable(tableNameTwo)
+}
+function iOSSafariCheck(tableName){
+	var userAgent = window.navigator.userAgent;
+
+	if (userAgent.match(/iPad/i)) {
+		hideTable(98)
+	}
+	if (userAgent.match(/iPhone/i)) {
+		hideTable(97)
+	}
+}
+</script>
+
+<div class='top'>
+<h1 align="middle"> <img src="sysicon.png" width="24" height="24"> Systems Launchpad</h1>
+
+<div class="wrapper", id="93", style = "display:none">
+<a style="color:black; text-decoration:none" href="#" onclick="hideTable(95)"> <b>Back to Main Page</b> </a>
+<br>
+<br>
+</div>
+
+<div class="wrapper", id="92", style = "display:none">
+<a style="color:black; text-decoration:none" href="#" onclick="hideTable(94)"> <b>Back to Main Page</b> </a>
+<br>
+<br>
+</div>
+
+<div id="148">
+<p align="middle"> Gives you quick access to the latest Systems sales <br> assets and breaking news that sellers need to know. </p>
+
+<div class="wrapper", id="98", style = "display:none">
+<a style="color:black; text-decoration:none" href="#" onclick="hideTable(95)"> <b>Add Systems Launchpad to Home Screen</b> </a>
+</div>
+
+<div class="wrapper", id="97", style = "display:none">
+<a style="color:black; text-decoration:none" href="#" onclick="hideTable(94)"> <b>Add Systems Launchpad to Home Screen</b> </a>
+</div>
+
+<br>
+
+</div>
+</div>
+
+<div class="wrapper", id="99", style = "display:none">
+
+<br>
+<table class="instructions_ipad" align = "center" border = 4px solid black>
+<tr>
+<th>
+Click the share button (
+<img src="share_icon.png" width="20" height="20">
+) at the top right of the screen and find the 'Add to Home Screen Button'. If you don't see it immediately, scroll to the right.
+</tr>
+</th>
+</table>
+<br>
+
+</div>
+
+<div class="wrapper", id="96", style = "display:none">
+
+<br>
+<table align = "center" border = 4px solid black>
+<tr>
+<th>
+Click the share button (
+<img src="share_icon.png" width="20" height="20">
+) at the bottom of the screen and find the 'Add to Home Screen Button'. If you don't see it immediately, scroll to the right.
+</tr>
+</th>
+</table>
+<br>
+
+</div>
+
+<div id ="147">
+
+<!-- Main Page - 0 -->
+<div id="0">
+<p align="middle" style="font-size:120%;"><b> Main Page </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net" target="_blank">SmartSeller</a> <p></p> 
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 1)">IBM Z</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 2)">Cognitive Systems</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 3)">Storage and SDI</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 4)">IBM LinuxONE</a> <p></p>
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/Wd5839aff59c6_440f_820c_e77b14488475/page/Systems%20Education%20Roadmaps" target="_blank">Pick a Badge to Earn</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smarter-sellers.mybluemix.net/#/systems/microlearning" target="_blank">SMARTER Micro Learning</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smarter-sellers.mybluemix.net/#/systems/mylearning/outstanding" target="_blank">SMARTER Learning</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smarter-sellers-skills.mybluemix.net/manager?tab=2" target="_blank">SMARTER Skills</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/Wd5839aff59c6_440f_820c_e77b14488475/page/Calendar%20of%20Events" target="_blank">Enablement Events Calendar</a> <p></p> 
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 5)">Selling Tools</a> <p></p>
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/Wd5839aff59c6_440f_820c_e77b14488475" target="_blank">Systems Enablement Community</a> <p></p> 
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 6)">Breaking News</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(0, 7)">Options</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- IBM Z - 1 -->
+<div id="1", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 1)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">IBM Z</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(1, 8)">IBM Z Server, Solutions, and Operating Systems</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(1, 9)">IBM Z Industry</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(1, 10)">Sales Plays</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- IBM Z Server, Solutions, and Operating Systems - 8 -->
+<div id="8", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 8)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(1, 8)">IBM Z</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">IBM Z Server, Solutions, and Operating Systems</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/a8235f73-27bd-4d7f-b600-15acd2d8c615?CallSource=ss" target="_blank">z14 Single Frame (ZR1)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/a2e567f8-2957-4bba-93b5-5e8b9fe31d50?CallSource=ss" target="_blank">z14 Dual Frame (M01 - M05)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/fb65daa0-d998-4c77-9a2a-6c19da66ff3c?CallSource=ss" target="_blank">Blockchain on Z</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/bc088f0e-694b-4d1b-b74b-bd79699fa89d?CallSource=ss" target="_blank">Business Analytics and Machine Learning</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e0d5410b-bee7-4d85-8540-3e5683bf8d69?CallSource=ss" target="_blank">Cloud on Z</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/8ca1b9a6-6323-496f-b012-ed8046d38c75?CallSource=ss" target="_blank">Dev Ops on Z</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/185fefed-d531-4bc0-85c9-66824d92da14?CallSource=ss" target="_blank">IT Operational Analytics on Z</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/7c1b2075-71b7-4292-98ea-2712f26dd3f7?CallSource=ss" target="_blank">Linux on Z</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/828239af-7153-46c0-9675-ff8e9c030729?CallSource=ss" target="_blank">Pervasive Encryption</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- IBM Z Industry - 9 -->
+<div id="9", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 9)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(1, 9)">IBM Z</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">IBM Z Industry</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/306420f2-8ac1-436a-9d7e-1fc1fe115067?CallSource=ss" target="_blank">Banking and Financial Services Industry</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/b5cfb89d-9a11-49ca-a2d3-49beea08cc8a?CallSource=ss" target="_blank">Government Industry</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/9f86ecc7-c14f-48d5-a52c-b04220023345?CallSource=ss" target="_blank">Healthcare Industry</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/f82d40e4-3ee5-46af-b5bc-071f501a6b04?CallSource=ss" target="_blank">Insurance Industry</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Sales Plays - 10 -->
+<div id="10", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 10)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(1, 10)">IBM Z</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Sales Plays</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/ryIE3A7zm?_k=rkdiev" target="_blank">Sales Plays</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Cognitive Systems - 2 -->
+<div id="2", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 2)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Cognitive Systems</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(2, 11)">Cognitive Infrastructure</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(2, 12)">Cloud</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(2, 13)">Power Software</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(2, 14)">Power Optimized Data Servers (was MDP)</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(2, 15)">SAP HANA</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Cognitive Infrastructure - 11 -->
+<div id="11", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 11)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(2, 11)">Cognitive Systems</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Cognitive Infrastructure</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/HyjTicbXX?_k=ibl8hr" target="_blank">Power E950/E980 Enterprise Servers</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/0e24255f-54a4-4155-aeaf-883596968fc1?CallSource=ss" target="_blank">POWER9 LC922/LC921</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/3c086fae-e420-44ad-a800-00eb394a2f1d?CallSource=ss" target="_blank">POWER9 Scale Out Servers</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/3875e550-779c-4083-bb9f-35d6e0b0edb3?CallSource=ss" target="_blank">POWER9 Accelerated Computing Servers (AC922)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/SJs4tAMib?_k=3hrupy" target="_blank">Artificial Intelligence (AI)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/B1I7gW8mG?_k=txqm2n" target="_blank">Data Science Experience (DSX)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/HyCJoSeXX?_k=41ve5n" target="_blank">Power Family - Assets Across Power Server Line</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Cloud - 12 -->
+<div id="12", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 12)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(2, 12)">Cognitive Systems</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Cloud</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/Sy5AYmZQM?_k=sjvqm4" target="_blank">IBM Cloud Private on Power</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/rk7PYXZXG?_k=lmsc9o" target="_blank">Hyperconverged Systems powered by Nutanix</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/HJg30G_jW?_k=d3h7xn" target="_blank">Cloud Latest News</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Power Software - 13 -->
+<div id="13", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 13)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(2, 13)">Cognitive Systems</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Power Software</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/7cba5aee-2c30-44aa-8625-62ef1096c532?CallSource=ss" target="_blank">PowerVM</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/a02ec2e3-b89a-44a5-9061-bce88e70d870?CallSource=ss" target="_blank">PowerHA SystemMirror</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/050bb998-d826-4e65-b38d-32ca1db6ae34?CallSource=ss" target="_blank">PowerSC</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/971e9faf-28e6-4ce0-93bb-3d1dbe49038c?CallSource=ss" target="_blank">PowerVC</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/5e22ee0e-b684-4190-bbb0-95ec3e380a08?CallSource=ss" target="_blank">GDR</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/89dcfc9f-7e18-4b47-963d-6195266da580?CallSource=ss" target="_blank">AIX</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/cfdeba62-2e1c-41fa-a5c4-48dff56258a2?CallSource=ss" target="_blank">IBM i</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Power Optimized Data Servers (was MDP) - 14 -->
+<div id="14", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 14)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(2, 14)">Cognitive Systems</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Power Optimized Data Servers (was MDP)</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/ByinZsmJm?_k=6uql50" target="_blank">ScyllaDB</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/455ed7b7-3f6b-45b7-99e2-c89864aaecef?CallSource=ss" target="_blank">Open Platform DBaaS</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/845be45f-505d-46a0-bb2e-119ab930146a?CallSource=ss" target="_blank">Hortonworks</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/7e3ce51f-0573-4ec9-a379-2d2209568272?CallSource=ss" target="_blank">Redis</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/280ef2e7-389b-46a6-be9b-691385e88a8c?CallSource=ss" target="_blank">neo4j</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/bbedb525-17bf-4e85-8da3-b73e5173ba22?CallSource=ss" target="_blank">Enterprise Database (EDB)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e8c061d5-9392-473b-a140-bc01a2ef503a?CallSource=ss" target="_blank">MongoDB</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- SAP HANA - 15 -->
+<div id="15", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 15)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(2, 15)">Cognitive Systems</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">SAP HANA</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/eda5af15-6be0-4831-bbe2-4e9980e2a659?CallSource=ss" target="_blank">SAP HANA</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Storage and SDI - 3 -->
+<div id="3", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 3)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Storage and SDI</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 16)">Announcements & Sales Plays</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 17)">Storage Systems</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 18)">Storage Software</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 19)">Spectrum Computing</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 20)">Conversations, Solutions, & Plays</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(3, 21)">Campaigns</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Announcements & Sales Plays - 16 -->
+<div id="16", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 16)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 16)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Announcements & Sales Plays</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/Bk80ci2N7?_k=aqctk6" target="_blank">8-14-18 - IBM Storage Announcement: Your Trusted Foundation for Multicloud</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/SJDHKQU6z?_k=o6w9rr" target="_blank">3Q Sales Plays & Programs</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/ByM1CfhJ7?_k=u8jqj5" target="_blank">7-10-18 - FlashSystem 9100 Announce</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/HkERTS2kX?_k=m5swoe" target="_blank">6-19-18 - Storage Reference Architecture for PowerAI</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Storage Systems - 17 -->
+<div id="17", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 17)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 17)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Storage Systems</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/rJhTE6ZJm?_k=nx45f3" target="_blank">Cross-Storage</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/142a4f9c-7560-4862-8417-91b0fa316a2d?CallSource=ss" target="_blank">IBM FlashSystem Family</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/71778e5b-b968-463b-a1f9-4c59a9b345ba?CallSource=ss" target="_blank">IBM Storwize Family</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/67180390-ea10-41b6-938c-2d8c50b6b80b?CallSource=ss" target="_blank">IBM DS8000 Family</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/c03cc540-c7bc-4a74-b657-6cdee096b757?CallSource=ss" target="_blank">IBM VersaStack Converged Infrastructure</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/c5489b30-5163-4fb8-b90f-5ade5f3c21b3?CallSource=ss" target="_blank">IBM Tape Systems</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Storage Software - 18 -->
+<div id="18", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 18)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 18)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Storage Software</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e9908457-2ee3-4365-8f49-c11c61699046?CallSource=ss" target="_blank">IBM Cloud Object Storage</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/18c66818-4114-4176-82eb-92ebde7cb9ea?CallSource=ss" target="_blank">IBM Spectrum Storage</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/8c647240-6a6d-48f1-aa79-40a9dad570bd?CallSource=ss" target="_blank">IBM Spectrum Storage Suite</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/4f5b3d23-6e71-42e6-900f-aff005002b79?CallSource=ss" target="_blank">IBM Storage Insights</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e5d93056-f331-45ee-9d69-3fcafc26bc18?CallSource=ss" target="_blank">IBM Spectrum Accelerate</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e0083a41-b076-4c47-8592-8f81d05e553b?CallSource=ss" target="_blank">IBM Spectrum Archive</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e58b7819-d741-47ec-9a51-407b368d7660?CallSource=ss" target="_blank">IBM Spectrum Control</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/c17ce6b5-db41-46a2-9f6d-81499a2bea77?CallSource=ss" target="_blank">IBM Spectrum Copy Data Management</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/9e2d4b65-a071-462c-959e-3a7ae9fa623a?CallSource=ss" target="_blank">IBM Spectrum NAS</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/cea11957-96ca-44e7-97bc-b037f00652ae?CallSource=ss" target="_blank">IBM Spectrum Protect</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/c62b201b-8d74-485c-b6fd-b8de3286399f?CallSource=ss" target="_blank">IBM Spectrum Protect Plus</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/f914e700-1853-471b-9e8f-b825f5f19466?CallSource=ss" target="_blank">IBM Spectrum Scale & ESS</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/bb5cd3b4-2860-4358-9909-c26bdedb9d64?CallSource=ss" target="_blank">IBM Spectrum Virtualize</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Spectrum Computing - 19 -->
+<div id="19", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 19)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 19)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Spectrum Computing</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e21f3d14-7f1a-4b3d-ae62-9e1e8c562d53?CallSource=ss" target="_blank">IBM Spectrum Computing</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/92283e6a-2045-461c-91f0-8dbf08c09629?CallSource=ss" target="_blank">IBM Spectrum Conductor</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/4360456c-d485-4848-98a5-a9567db7e61e?CallSource=ss" target="_blank">IBM Spectrum LSF</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/e7191377-aae7-4f4a-ab2e-d656b6129452?CallSource=ss" target="_blank">IBM Spectrum Symphony</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Conversations, Solutions, & Plays - 20 -->
+<div id="20", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 20)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 20)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Conversations, Solutions, & Plays</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/HyGI0DGEf?_k=dyckow" target="_blank">2018 Conversations</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/rkNp0CkG7?_k=l4fa8d" target="_blank">Storage Solutions</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/295143f9-4688-46fc-a6b1-0f18b2faa688?CallSource=ss" target="_blank">Cognitive & Hybrid Cloud Play</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/ef38a2ac-c883-4a7f-b6e7-f61d919457d2?CallSource=ss" target="_blank">Data Protection for Data Oceans Play</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/72f454b3-20dc-49ef-ab6c-f55ee636c7b8?CallSource=ss" target="_blank">Peace of Mind Play</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/75358df0-b1df-4bdb-bfda-d15ff26ee54c?CallSource=ss" target="_blank">Industry PoV Play</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Campaigns - 21 -->
+<div id="21", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 21)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(3, 21)">Storage and SDI</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Campaigns</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/BJ2gTU1LG?_k=1ps2v9" target="_blank">All-Flash</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/SyLqgK1If?_k=3e4ef3" target="_blank">Hybrid Cloud Storage</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/category/Sy4gaE0hz?_k=zv2v91" target="_blank">Mid-Market Growth Driver</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- IBM LinuxONE - 4 -->
+<div id="4", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 4)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">IBM LinuxONE</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/65dde6b6-09cf-4def-aabf-2fe00d466244?CallSource=ss" target="_blank">About LinuxONE</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/70d704f9-9fc6-431f-b17e-a7c1d6f74e9f?CallSource=ss" target="_blank">LinuxONE Security</a> <p></p> 
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(4, 22)">Hardware & Operating Systems</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(4, 23)">Solutions & Sales Plays</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Hardware & Operating Systems - 22 -->
+<div id="22", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 22)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(4, 22)">IBM LinuxONE</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Hardware & Operating Systems</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/8a57893c-0e45-4f4a-9e7f-c457bdd0582f?CallSource=ss" target="_blank">LinuxONE Emperor II</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/cdbc7766-5447-4865-8a35-fd76e02aa2d1?CallSource=ss" target="_blank">LinuxONE Rockhopper II</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/647a70a2-1dae-4b49-ad6d-20727599799d?CallSource=ss" target="_blank">z/VM</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Solutions & Sales Plays - 23 -->
+<div id="23", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 23)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(4, 23)">IBM LinuxONE</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Solutions & Sales Plays</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/c4c07680-7842-41fb-bfd1-b6f54cfcaafd?CallSource=ss" target="_blank">Oracle Databases</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/77ee0e82-2bb6-4cd3-ab40-f5e2a4c68c91?CallSource=ss" target="_blank">Blockchain</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/371c0c70-d691-4b28-ae01-82b969b4b1b2?CallSource=ss" target="_blank">Temenos T24</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/009f5d13-abe1-4655-8dcb-9fbd69d3d548?CallSource=ss" target="_blank">IBM Financial Transaction Manager (FTM)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/91bc5d26-46eb-4c89-8175-d76a421e51a2?CallSource=ss" target="_blank">IBM Cloud Private</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/76ca38b6-ecc1-4dd3-931f-f04b62680ee6?CallSource=ss" target="_blank">Db2 Warehouse</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/5d799d5f-f92d-4c5d-9d90-7d593556d1c2?CallSource=ss" target="_blank">Open-Source Databases</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Selling Tools - 5 -->
+<div id="5", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 5)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Selling Tools</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://www.ibm.com/systems/clientcenterdemonstrations/faces/dcHome.jsp" target="_blank">IBM Client Demonstration Center</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-01.ibm.com/services/epricer/v2/ibm/#/main" target="_blank">IBM COPRA Pricer (North America and Europe)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://www.ibm.com/financing/solutions/it-infrastructure" target="_blank">IBM Global Financing</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://d27dbc33.rchland.ibm.com/b_dir/bcdcweb.nsf/mywork?OpenForm" target="_blank">IBM Systems Client Center Request</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://www.ibm.com/it-infrastructure/services/client-experience-portal" target="_blank">IBM Systems Client Experience Portal (ISCEP)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/activities/service/html/mainpage#activitypage,cf99471e-e601-4efb-8bb7-5a1c7afbbaed" target="_blank">IBM Systems Wins and Success Stories</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-150.ibm.com/sales/salesconnect" target="_blank">SalesConnect</a> <p></p> 
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(5, 24)">Cognitive Systems</a> <p></p>
+<a style="color:black; text-decoration:none" href="#" onclick="swapTables(5, 25)">Storage and SDI</a> <p></p>
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Cognitive Systems - 24 -->
+<div id="24", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 24)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(5, 24)">Selling Tools</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Cognitive Systems</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://iprt-wlp.w3ibm.mybluemix.net/home" target="_blank">Power Systems Prerequisites Tool</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://www.cposervices.biz/power/" target="_blank">Power Systems Cost Savings Estimator</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Storage and SDI - 25 -->
+<div id="25", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 25)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(5, 25)">Selling Tools</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Storage and SDI</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W53ef9a8aa710_4ab4_b88c_b95c3e62085a" target="_blank">Storage and SDI Sales Essentials</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W53ef9a8aa710_4ab4_b88c_b95c3e62085a/page/All-Flash%20%26%20Traditional%20Storage" target="_blank">All_Flash and Traditional Storage Sales Tools</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://www.evaluatorgroup.com/data-reduction-estimator/" target="_blank">Data Reduction Estimator Tool</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-03.ibm.com/sales/support/ShowDoc.wss?docid=A370981M90868B97&infotype=SK&infosubtype=S0&node=doctype,S0%7Cdoctype,STL%7C&appname=CC_CFSS" target="_blank">TCO Tools</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Breaking News - 6 -->
+<div id="6", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 6)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Breaking News</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/787c2c02-1041-4ee9-86d0-e512f9ead978?CallSource=ss" target="_blank">IBM Storage is launching several data protection solutions fit for multicloud environment</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://ibm.ent.box.com/s/tsp6kl4549dysm313tixowpa98z76b0o" target="_blank">Learn why an infrastructure agenda matters in Artificial Intelligence conversations</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/0d9e2c7e-bced-485c-99ae-233a6f9ad38a?CallSource=ss" target="_blank">Power Team: Announcing the new Midrange (E950) and High End (E980) Power Servers</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/wikis/home?lang=en-us#!/wiki/W9bb4b536e212_4fe9_b534_08154196a7a7/page/Systems%20Launchpad" target="_blank">Systems Launchpad can be installed on mobile devices</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://w3-connections.ibm.com/wikis/home?lang=en-us#!/wiki/Wd5839aff59c6_440f_820c_e77b14488475/page/Calendar%20of%20Events" target="_blank">New Systems Calendar - find upcoming training events, sortable by platform</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smarter-sellers.mybluemix.net/#/systems/microlearning/1638" target="_blank">IBM Servers Client Success 3Q 2018 Kick Off Event, hosted by Alex Gogh (replay)</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smarter-sellers.mybluemix.net/#/systems/course/1186/details" target="_blank">Power Team: POWER9 Family Level 1 course - get an overview of all POWER9 systems</a> <p></p> 
+<a style="color:black; text-decoration:none" href="http://smarter-sellers.mybluemix.net/#/systems/course/1441/details" target="_blank">Power Team: Work on your Cloud Private badge with the IBM Cloud Private on Power Level 1 course</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/bcb5fc0e-ab82-43c2-944f-13d4b0f7f28e?CallSource=ss" target="_blank">IBM FlashSystem 9100 Announce - Powering business at the speed of life</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/dd7df146-9be6-4023-9916-4555453cd035?CallSource=ss" target="_blank">Storage Team: Reduce storage costs with All-Flash IBM Storwize and IBM Spectrum Storage software</a> <p></p> 
+<a style="color:black; text-decoration:none" href="https://smartseller.mybluemix.net/#/collection/0e24255f-54a4-4155-aeaf-883596968fc1?CallSource=ss" target="_blank">Power Team: Announcing new Power servers (LC922/LC921) designed to crush big data</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+<!-- Options - 7 -->
+<div id="7", style = "display:none">
+<p align="middle"><b> <a style="color:black; text-decoration:none; font-size:120%;" href="#" onclick="swapTables(0, 7)">Main Page</a> <img src="right_icon.png" width="15" height="12" style="width:24px; height:20px;"> <a style="font-size:120%;">Options</a> </b></p><table align = "center" border = 4px solid black>
+
+<tr>
+<th>
+<a style="color:black; text-decoration:none" href="https://ibmsystemsenablement.slack.com/messages/C97RNBCP7" target="_blank">SLACK us some luv (or not)</a> <p></p> 
+</th>
+</tr>
+
+</table>
+<br>
+</div>
+
+</div>
+</body>
+</div>
+</meta>
+</html>
