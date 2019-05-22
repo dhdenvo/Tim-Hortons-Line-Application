@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<!-- Header -->
 <head>
-  <title>Systems Launchpad</title>
+  <title>Tim Hortons Line - Markam IBM Lab</title>
   <link rel="shortcut icon" type="image/x-icon" href="sysicon.png">
   <link rel="apple-touch-icon" href="http://drive.google.com/uc?export=view&id=10QHeC2Ns1fVcPitwuIHiPDYHz0wWAd7u">
 
 <style>
-.mini {
-	border-width: 1px;
-	width: 94%;
-	font-size: 94%;
-}
-body{
-	background-color: #2F4F4F;
+
+body {
+	background-color: #c7f2a7;
+	padding: 20px;
 } 
-.container{
-	background-color: #b0e0e6;
+.container {
+	background-color: #e2fadb;
 }
 .top {
-	background-color: #388E8E;
+	background-color: #cfebdf;
+	padding: 1px;
+	font-size: 25px;
 }
 .middle {
-    text-align: center;
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.button {
+	font-size: 24px;
+	padding: 10px 20px;
+	border-radius: 6px;
+	border: 2px solid #696969;
+	-webkit-transition-duration: 0.4s; /* Safari */
+  	transition-duration: 0.4s;
+	/*box-shadow: 0 4px #999;*/
+}
+
+.button:hover {
+	background-color: #95bf8f;
+	color: white;
+}
+
+.button:active {
+	background-color: #5f634f;
+	/*box-shadow: 0 1px #666;
+	transform: translateY(3px);*/
 }
 
 </style>
+
 </head>
 
+
+<!-- Body -->
 <div class='container'>
 <body onload="getData()">
 
@@ -41,9 +67,15 @@ function getData() {
 		if (this.readyState == 4 && this.status == 200) {
 			line = this.responseText.split(',')[0];
 			time = this.responseText.split(',')[1];
-			time = time.substring(0, time.length - 2);
+			time = time.substring(0, time.length);
 			document.getElementById("line").innerHTML = line;
 			document.getElementById("time").innerHTML = time;
+			//console.log("Good");
+		} else if (this.readyState == 4 && this.status != 200) {
+			document.getElementById("line").innerHTML = "Bad";
+			document.getElementById("time").innerHTML = "Connection";
+			//console.log(this.readyState);
+			//console.log("Bad");
 		}
 	};
 	xhttp.open("GET", "server_data.dat", true);
@@ -53,23 +85,23 @@ function getData() {
 </script>
 
 <div class='top'>
-<h1 align="middle"> Tim Hortons Line</h1>
+	<h1 align="middle"> Tim Hortons Line</h1>
 </div>
 
 <div class='middle'>
 
-<h1>
-	The amount of people in line is:
-	<p id="line"></p>
-	This was recorded at:
-	<p id="time"></p>
-</h1>
-<button onclick="getData
-()">Update Line</button>
+	<h1>
+		The amount of people in line is:
+		<p id="line"></p>
+		This was recorded at:
+		<p id="time"></p>
+	</h1>
+	<button class="button button" onclick="getData()">Update Line</button>
 
 </div>
 
 </body>
 </div>
+
 </meta>
 </html>
