@@ -56,7 +56,7 @@ body {
 
 <!-- Body -->
 <div class='container'>
-<body onload="getData()">
+<body onload="update()">
 
 <script>
 var line = 0;
@@ -81,6 +81,11 @@ function getData() {
 	};
 	xhttp.open("GET", "server_data.dat", true);
 	xhttp.send();
+}
+
+function update() {
+	getData();
+	setInterval(getData, 4800);
 }
 
 </script>
