@@ -67,18 +67,26 @@ class User(Resource):
         img_time = datetime.datetime.now()
 
         #Get the values from the request
-        val = list(request.values.values())
-
-        #Compensate for any missing padding
-        #Should not be required anymore but still good to keep to be safe
-        pad = 4 - (len(val[0]) % 4)
-        if pad == 4:
-            pad = 0
-
-        #Decodes the image with base 64	
-        image = base64.b64decode(val[0] + "=" * pad)
-        files = {"files": ('image.jpg', image)}
+        val = list(request.files.values())
         
+        #On Android
+        if val == []:
+            val = list(request.values.values())
+        
+            #Compensate for any missing padding
+            #Should not be required anymore but still good to keep to be safe
+            pad = 4 - (len(val[0]) % 4)
+            if pad == 4:
+                pad = 0
+    
+            #Decodes the image with base 64	
+            image = base64.b64decode(val[0] + "=" * pad)
+            files = {"files": ('image.jpg', image)}
+        
+        #On IOS
+        else:
+            files = {"files": ('image.jpg', val[0].read())}
+            
         #Uncomment below and comment above if doing it from non application
         #files = request.files
 
