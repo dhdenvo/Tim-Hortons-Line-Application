@@ -50,7 +50,7 @@ class User(Resource):
         server_data.close()
         
         server_data = open(storage_file, 'a+')
-        server_data.write(data)
+        server_data.write("\n" + data)
         server_data.close()
         print(data)
         
