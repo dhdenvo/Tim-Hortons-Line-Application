@@ -21,6 +21,18 @@ api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa
 server_url = "http://127.0.0.1:5000/data"
 website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
 website = True
+#The location of 8200 Warden Lab
+def_long, def_lat = 43.849027, -79.339243
+
+def get_lnglat(request):
+    #Get the parameters from the request
+    long = request.args.get("long")
+    lat = request.args.get("lat")
+    
+    #If one of the lat or long are not existent return the defaults
+    if not long or not lat:
+        long, lat = def_long, def_lat
+    return round(long, 3), round(lat, 3)
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -31,10 +43,16 @@ class User(Resource):
     #Run when recieve a get rest api call
     #Reads off the data from the server file
     def get(self):
+        #Get the long and lat of the client
+        long, lat = get_lnglat(request)
+        
+        #Do a range of plus or minus 3 thousanths
+        
+        #Find the server data and return it to the client
         server_data = open(server_file, 'r')  
         data = server_data.read()
         server_data.close()
-        return data
+        return data 
 
     #Run when recieve a put rest api call
     #Writes the call arguments to the server file    
@@ -42,7 +60,7 @@ class User(Resource):
         #Grabs the arguments from the call
         args = request.args
         data = args["data"]
-        basic_data = data.split(",")[3] + "," + data.split(",")[2]
+        basic_data = data.split(",")[5] + "," + data.split(",")[4]   
         
         #Writes the arguments to the server file
         server_data = open(server_file, 'w')  
@@ -65,6 +83,9 @@ class User(Resource):
     def post(self):
         #Grabs the time when the post call is made
         img_time = datetime.datetime.now()
+        
+        #Get long and lat of the client
+        long, lat = get_lnglat(request)
 
         #Get the values from the request
         val = list(request.files.values())
@@ -103,11 +124,14 @@ class User(Resource):
         amount_in_line = len(response['classified'])
         
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
-        img_time_str = img_time.strftime("%d/%m/%Y,%I:%M %p")
+        img_time_str = img_time.strftime("%I:%M %p")
+        img_day_str = img_time.strftime("%d/%m/%Y")        
         week_day = img_time.weekday() + 2
+        
         if week_day > 7: 
             weekday -= 7
-        server_data = "%d," % week_day + img_time_str + ",%d" % amount_in_line
+        
+        server_data = img_day_str + ",%d" % week_day + ",1.417 × 10^32 K,Blah," + img_time_str + ",%d,%d,%d" % (amount_in_line, long, lat)
         
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
