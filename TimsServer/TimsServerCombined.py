@@ -77,7 +77,7 @@ class User(Resource):
         #Iterate through the file checking if the locations match
         for line in data_list:
             if float(line[-1]) in lat_range and float(line[-2]) in long_range:
-                return line[5] + "," + line[4]
+                return line[3] + "," + line[2]
         return "No Line,Data"
 
     #Run when recieve a put rest api call
@@ -94,8 +94,8 @@ class User(Resource):
         print(data)
         
         #Writes the arguments to the server file for the website
-        if website and data.split(",")[-2] in def_lat and data.split(",")[-1] == def_long:
-            basic_data = data.split(",")[5] + "," + data.split(",")[4]               
+        if website and data.split(",")[-2] == def_lat and data.split(",")[-1] == def_long:
+            basic_data = data.split(",")[3] + "," + data.split(",")[2]               
             server_data = open(website_server_file, 'w')  
             server_data.write(basic_data)
             server_data.close()
@@ -156,7 +156,7 @@ class User(Resource):
         if week_day == 7: 
             weekday -= 7
         
-        server_data = img_day_str + ",%d" % week_day + ",1.417 x 10^32 K,Blah," + img_time_str + ",%d," % amount_in_line + str(long) + "," + str(lat)
+        server_data = img_day_str + ",%d," % week_day + img_time_str + ",%d," % amount_in_line + str(long) + "," + str(lat)
         
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
