@@ -25,10 +25,12 @@ def get_lnglat(request, precision):
 
 #Create a radius around the longitude and latitude given
 def get_coor_range(long, lat, radius, precision):
+    #Create a list based on the radius and the precision for each longitude and latitude
     long_range = list(range(int(long * (10 ** precision) - radius), int(long * (10 ** precision) + radius)))
     lat_range = list(range(int(lat * (10 ** precision) - radius), int(lat * (10 ** precision) + radius)))
-    lat_range = [x / (10 ** precision) for x in lat_range]
-    long_range = [x / (10 ** precision) for x in long_range]
+    #Make the ranges back into floats rather than large integers
+    lat_range = [x / float(10 ** precision) for x in lat_range]
+    long_range = [x / float(10 ** precision) for x in long_range]
     return long_range, lat_range
 
 #Server information
@@ -60,14 +62,20 @@ class User(Resource):
         data = server_data.read()
         server_data.close()
         
+        #Break apart the storage data
         data_list = []
         for line in data.split("\n"):
             data_list.append(line.split(","))
-        data_list = data_list[1:-1][::-1]
-        print("Person Location " + str(long) + " " + str(lat))
+        #Remove the last item if it is empty (trailing \n line in file)
+        if data_list[-1] == []:
+            data_list = data_list[:-1]
+        #Remove header line and reverse list
+        data_list = data_list[1:][::-1]
+        #print("Person Location " + str(long) + " " + str(lat))
+        #Create the ranges for the coordinates (with a radius of 3)
         long_range, lat_range = get_coor_range(long, lat, 3, location_precision)
+        #Iterate through the file checking if the locations match
         for line in data_list:
-            print(line)
             if float(line[-1]) in lat_range and float(line[-2]) in long_range:
                 return line[5] + "," + line[4]
         return "No Line,Data"
