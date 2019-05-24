@@ -13,6 +13,23 @@ app = Flask(__name__)
 cors = CORS(app, origins="*")
 api = Api(app)
 
+def get_lnglat(request, precision):
+    #Get the parameters from the request
+    long = request.args.get("long")
+    lat = request.args.get("lat")
+
+    #If one of the lat or long are not existent or they are in the radius of the default return the defaults
+    if not long or not lat or (long in def_long_range and lat in def_long_range):
+        long, lat = def_long, def_lat
+    return round(long, precision), round(lat, precision)
+
+#Create a radius around the longitude and latitude given
+def get_coor_range(long, lat, radius, precision):
+    long_range = list(range(int(long * (10 ** precision) - radius), int(long * (10 ** precision) + radius)))
+    lat_range = list(range(int(lat * (10 ** precision) - radius), int(lat * (10 ** precision) + radius)))
+    lat_range = [x / (10 ** precision) for x in lat_range]
+    long_range = [x / (10 ** precision) for x in long_range]
+    return long_range, lat_range
 
 #Server information
 server_file = "server_data.dat"
@@ -21,18 +38,10 @@ api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa
 server_url = "http://127.0.0.1:5000/data"
 website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
 website = True
+location_precision = 3
 #The location of 8200 Warden Lab
 def_long, def_lat = 43.849027, -79.339243
-
-def get_lnglat(request):
-    #Get the parameters from the request
-    long = request.args.get("long")
-    lat = request.args.get("lat")
-    
-    #If one of the lat or long are not existent return the defaults
-    if not long or not lat:
-        long, lat = def_long, def_lat
-    return round(long, 3), round(lat, 3)
+def_long_range, def_lat_range = get_coor_range(def_long, def_lat, 3, location_precision)
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -44,15 +53,24 @@ class User(Resource):
     #Reads off the data from the server file
     def get(self):
         #Get the long and lat of the client
-        long, lat = get_lnglat(request)
-        
-        #Do a range of plus or minus 3 thousanths
+        long, lat = get_lnglat(request, location_precision)
         
         #Find the server data and return it to the client
-        server_data = open(server_file, 'r')  
+        server_data = open(storage_file, 'r')  
         data = server_data.read()
         server_data.close()
-        return data 
+        
+        data_list = []
+        for line in data.split("\n"):
+            data_list.append(line.split(","))
+        data_list = data_list[1:-1][::-1]
+        print("Person Location " + str(long) + " " + str(lat))
+        long_range, lat_range = get_coor_range(long, lat, 3, location_precision)
+        for line in data_list:
+            print(line)
+            if float(line[-1]) in lat_range and float(line[-2]) in long_range:
+                return line[5] + "," + line[4]
+        return "No Line,Data"
 
     #Run when recieve a put rest api call
     #Writes the call arguments to the server file    
@@ -73,7 +91,7 @@ class User(Resource):
         print(data)
         
         #Writes the arguments to the server file for the website
-        if website:
+        if website and data.split(",")[-2] in def_lat and data.split(",")[-1] == def_long:
             server_data = open(website_server_file, 'w')  
             server_data.write(basic_data)
             server_data.close()
@@ -85,7 +103,7 @@ class User(Resource):
         img_time = datetime.datetime.now()
         
         #Get long and lat of the client
-        long, lat = get_lnglat(request)
+        long, lat = get_lnglat(request, location_precision)
 
         #Get the values from the request
         val = list(request.files.values())
