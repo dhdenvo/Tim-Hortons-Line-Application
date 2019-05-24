@@ -86,13 +86,8 @@ class User(Resource):
         #Grabs the arguments from the call
         args = request.args
         data = args["data"]
-        basic_data = data.split(",")[5] + "," + data.split(",")[4]   
         
-        #Writes the arguments to the server file
-        server_data = open(server_file, 'w')  
-        server_data.write(basic_data)
-        server_data.close()
-        
+        #Writes the data to the server storage file
         server_data = open(storage_file, 'a+')
         server_data.write("\n" + data)
         server_data.close()
@@ -100,6 +95,7 @@ class User(Resource):
         
         #Writes the arguments to the server file for the website
         if website and data.split(",")[-2] in def_lat and data.split(",")[-1] == def_long:
+            basic_data = data.split(",")[5] + "," + data.split(",")[4]               
             server_data = open(website_server_file, 'w')  
             server_data.write(basic_data)
             server_data.close()
