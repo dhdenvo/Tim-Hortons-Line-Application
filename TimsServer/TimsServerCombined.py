@@ -126,9 +126,9 @@ class User(Resource):
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
         img_time_str = img_time.strftime("%I:%M %p")
         img_day_str = img_time.strftime("%d/%m/%Y")        
-        week_day = img_time.weekday() + 2
+        week_day = img_time.weekday() + 1
         
-        if week_day > 7: 
+        if week_day == 7: 
             weekday -= 7
         
         server_data = img_day_str + ",%d" % week_day + ",1.417 × 10^32 K,Blah," + img_time_str + ",%d,%d,%d" % (amount_in_line, long, lat)
