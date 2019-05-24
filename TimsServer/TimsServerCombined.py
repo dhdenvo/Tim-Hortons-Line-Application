@@ -19,9 +19,9 @@ def get_lnglat(request, precision):
     lat = request.args.get("lat")
 
     #If one of the lat or long are not existent or they are in the radius of the default return the defaults
-    if not long or not lat or (long in def_long_range and lat in def_long_range):
+    if not long or not lat or (long in def_long_range and lat in def_long_range) or (not long.replace(".", "", 1).isdigit()) or (not lat.replace(".", "", 1).isdigit()):
         long, lat = def_long, def_lat
-    return round(long, precision), round(lat, precision)
+    return round(float(long), precision), round(float(lat), precision)
 
 #Create a radius around the longitude and latitude given
 def get_coor_range(long, lat, radius, precision):
@@ -67,7 +67,7 @@ class User(Resource):
         for line in data.split("\n"):
             data_list.append(line.split(","))
         #Remove the last item if it is empty (trailing \n line in file)
-        if data_list[-1] == []:
+        if data_list[-1] == ['']:
             data_list = data_list[:-1]
         #Remove header line and reverse list
         data_list = data_list[1:][::-1]
