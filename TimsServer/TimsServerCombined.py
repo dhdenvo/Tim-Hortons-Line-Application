@@ -116,6 +116,9 @@ class User(Resource):
         if val == []:
             val = list(request.values.values())
         
+            if val == []:
+                return "No Image Sent"
+        
             #Compensate for any missing padding
             #Should not be required anymore but still good to keep to be safe
             pad = 4 - (len(val[0]) % 4)
