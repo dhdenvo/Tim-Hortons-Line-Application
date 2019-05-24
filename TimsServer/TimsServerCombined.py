@@ -131,7 +131,7 @@ class User(Resource):
         if week_day == 7: 
             weekday -= 7
         
-        server_data = img_day_str + ",%d" % week_day + ",1.417 x 10^32 K,Blah," + img_time_str + ",%d,%d,%d" % (amount_in_line, long, lat)
+        server_data = img_day_str + ",%d" % week_day + ",1.417 x 10^32 K,Blah," + img_time_str + ",%d," % amount_in_line + str(long) + "," + str(lat)
         
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
