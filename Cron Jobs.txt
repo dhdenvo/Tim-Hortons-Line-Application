@@ -1,0 +1,17 @@
+30 6 * * * python "/home/ddaghelian/Tims Line Application/TimsServer/TimsCombinedServer"
+0 18 * * * curl http://localhost:5000/data
+*/30 * * * * python "/home/ddaghelian/Tims Line Application/ServerModel/build_graph.py"
+0 18 * * * python "/home/ddaghelian/Tims Line Application/ServerModel/train_model.py"
+0 19 * * * python "/home/ddaghelian/Tims Line Application/TimsServer/RestartServerStorage.py"
+0 4 * * * python "/home/ddaghelian/Tims Line Application/ServerModel/predict.py"
+
+Or These
+
+30 6 * * * python /home/ddaghelian/Tims\ Line\ Application/TimsServer/TimsCombinedServer
+0 18 * * * curl http://localhost:5000/data
+*/30 * * * * python /home/ddaghelian/Tims\ Line\ Application/ServerModel/build_graph.py
+0 18 * * * python /home/ddaghelian/Tims\ Line\ Application/ServerModel/train_model.py
+0 19 * * * python /home/ddaghelian/Tims\ Line\ Application/TimsServer/RestartServerStorage.py
+0 4 * * * python /home/ddaghelian/Tims\ Line\ Application/ServerModel/predict.py
+
+
