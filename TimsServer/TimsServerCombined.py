@@ -170,7 +170,7 @@ class User(Resource):
         
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
         img_time_str = img_time.strftime("%H:%M")
-        img_day_str = img_time.strftime("%d/%m/%Y")        
+        img_day_str = img_time.strftime("%Y-%m-%d")        
         week_day = img_time.weekday() + 1
         
         if week_day == 7: 
