@@ -3,10 +3,12 @@ from flask_restful import Api, Resource, reqparse
 from flask import request
 from flask_cors import CORS
 from flask_cors import cross_origin
+import signal
 import json
 import datetime
 import requests
 import base64
+import os
 
 #Defining The API Application
 app = Flask(__name__)
@@ -53,6 +55,7 @@ api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa
 server_url = "http://127.0.0.1:5000/data"
 website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
 website = True
+auto_reset = True
 location_precision = 3
 #The location of 8200 Warden Lab
 def_long, def_lat = 43.849027, -79.339243
@@ -67,6 +70,10 @@ class User(Resource):
     #Run when recieve a get rest api call
     #Reads off the data from the server file
     def get(self):
+        #If a get request is made when it is 6 pm, the server shuts down
+        #This is done so after 6 pm, the server shuts down
+        if datetime.datetime.now().hour == 18 and auto_reset:
+            os.kill(os.getpid(), signal.SIGINT)
         #Get the long and lat of the client
         long, lat = get_lnglat(request, location_precision)
         
