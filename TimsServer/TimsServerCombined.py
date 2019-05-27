@@ -33,6 +33,19 @@ def get_coor_range(long, lat, radius, precision):
     long_range = [x / float(10 ** precision) for x in long_range]
     return long_range, lat_range
 
+#Convert military time to twelve hour clock
+def convert_mil_to_twelve(military):
+    #Split between hour and minute
+    hour = int(military.split(":")[0])
+    #Calculate whether it is AM or PM
+    twelve = "AM"
+    if hour >= 12:
+        twelve = "PM"
+        hour -= 12
+    #Return the twelve hour time
+    return str(hour) + ":" + military.split(":")[1] + " " + twelve
+    
+
 #Server information
 server_file = "server_data.dat"
 storage_file = "server_storage.csv"
@@ -77,7 +90,7 @@ class User(Resource):
         #Iterate through the file checking if the locations match
         for line in data_list:
             if float(line[-1]) in lat_range and float(line[-2]) in long_range:
-                return line[3] + "," + line[2]
+                return line[3] + "," + convert_mil_to_twelve(line[2])
         return "No Line,Data"
 
     #Run when recieve a put rest api call
@@ -95,7 +108,7 @@ class User(Resource):
         
         #Writes the arguments to the server file for the website
         if website and data.split(",")[-2] == def_lat and data.split(",")[-1] == def_long:
-            basic_data = data.split(",")[3] + "," + data.split(",")[2]               
+            basic_data = data.split(",")[3] + "," + convert_mil_to_twelve(data.split(",")[2])      
             server_data = open(website_server_file, 'w')  
             server_data.write(basic_data)
             server_data.close()
@@ -149,7 +162,7 @@ class User(Resource):
         amount_in_line = len(response['classified'])
         
         #Builds the put call's parameters using the amount of people in line and the time of the original call        
-        img_time_str = img_time.strftime("%I:%M %p")
+        img_time_str = img_time.strftime("%H:%M")
         img_day_str = img_time.strftime("%d/%m/%Y")        
         week_day = img_time.weekday() + 1
         
