@@ -21,7 +21,8 @@ def get_lnglat(request, precision):
     lat = request.args.get("lat")
 
     #If one of the lat or long are not existent or they are in the radius of the default return the defaults
-    if not long or not lat or (long in def_long_range and lat in def_long_range) or (not long.replace(".", "", 1).isdigit()) or (not lat.replace(".", "", 1).isdigit()):
+    if not long or not lat or (long in def_long_range and lat in def_long_range) or \
+       (not long.replace(".", "", 1).replace("-", "", 1).isdigit()) or (not lat.replace(".", "", 1).replace("-", "", 1).isdigit()):
         long, lat = def_long, def_lat
     return round(float(long), precision), round(float(lat), precision)
 
