@@ -145,15 +145,19 @@ class User(Resource):
         
             if val == []:
                 return "No Image Sent"
-        
+            
+            image = val[0]
+            if len(val) == 4:
+                image = val[2]
+            
             #Compensate for any missing padding
             #Should not be required anymore but still good to keep to be safe
-            pad = 4 - (len(val[0]) % 4)
+            pad = 4 - (len(image) % 4)
             if pad == 4:
                 pad = 0
     
             #Decodes the image with base 64	
-            image = base64.b64decode(val[0] + "=" * pad)
+            image = base64.b64decode(image + "=" * pad)
             files = {"files": ('image.jpg', image)}
         
         #On IOS

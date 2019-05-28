@@ -2,10 +2,10 @@ import json
 import requests
 import datetime
 
-api_url = "http://localhost:5000/data"
+api_url = "http://drv-ctp6.canlab.ibm.com:5000/data"
 image_param = "?image=True"
-get = True
-image = True
+get = False
+image = False
 
 if (get):
     req = requests.get(url = api_url + (image_param * int(image)))
