@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         private void makeRequest(){
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            StringRequest request = new StringRequest(Request.Method.POST, server,
+            StringRequest request = new StringRequest(Request.Method.POST, getLocUrl(server),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -177,6 +177,32 @@ public class MainActivity extends AppCompatActivity {
 //
 //    }
 
+    /**
+     * Gets the longitude and latitude of the android device and updates the url with them as parameters
+     * @param url The original url to the server
+     * @return The updated url with the location parameters
+     */
+    private String getLocUrl(String url) {
+
+        try {
+            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            //Get the latitude and longitude of the phone
+            double lng = location.getLongitude();
+            double lat = location.getLatitude();
+
+            //Set them as parameters by appending them to the url
+            return url + "?lat=" + String.valueOf(lat) + "&long=" + String.valueOf(lng);
+        } catch (SecurityException e) {
+            //If the user denies the app's access to the location, do nothing to the url
+            return url;
+        }
+
+    }
+
+
+
     public class JSONTask extends AsyncTask<String, String, String> {
 
         @Override
@@ -185,22 +211,7 @@ public class MainActivity extends AppCompatActivity {
             BufferedReader reader = null;
 
             //The string in which the url is going to be set to
-            String urlWithParams;
-
-            try {
-                LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                //Get the latitude and longitude of the phone
-                double lng = location.getLongitude();
-                double lat = location.getLatitude();
-
-                //Set them as parameters by appending them to the url
-                urlWithParams = params[0] + "?lat=" + String.valueOf(lat) + "&long=" + String.valueOf(lng);
-            } catch (SecurityException e) {
-                //If the user denies the app's access to the location, do nothing to the url
-                urlWithParams = params[0];
-            }
+            String urlWithParams = getLocUrl(params[0]);
 
             try {
                 URL url = new URL(urlWithParams);
