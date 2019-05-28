@@ -16,10 +16,14 @@ app = Flask(__name__)
 cors = CORS(app, origins="*")
 api = Api(app)
 
-def get_latlng(request, precision):
-    #Get the parameters from the request
-    long = request.args.get("long")
-    lat = request.args.get("lat")
+def get_latlng(request, precision, given_lat = None, given_long = None):
+    if given_lat and given_long:
+        long = given_long
+        lat = given_lat
+    else:
+        #Get the parameters from the request
+        long = request.args.get("long")
+        lat = request.args.get("lat")
 
     #If one of the lat or long are not existent or they are in the radius of the default return the defaults
     if not long or not lat or (long in def_long_range and lat in def_long_range) or \
@@ -132,9 +136,6 @@ class User(Resource):
     def post(self):
         #Grabs the time when the post call is made
         img_time = datetime.datetime.now()
-        
-        #Get long and lat of the client
-        lat, long = get_latlng(request, location_precision)
 
         #Get the values from the request
         val = list(request.files.values())
@@ -146,9 +147,12 @@ class User(Resource):
             if val == []:
                 return "No Image Sent"
             
-            image = val[0]
             if len(val) == 4:
                 image = val[2]
+                lat, lng = get_lat_lng(request, location_precision, val[0], val[1])
+            else:
+                image = val[0]
+                lat, lng = get_latlng(request, location_precision, def_lat, def_long)
             
             #Compensate for any missing padding
             #Should not be required anymore but still good to keep to be safe
@@ -162,6 +166,8 @@ class User(Resource):
         
         #On IOS
         else:
+            #Get long and lat of the client
+            lat, long = get_latlng(request, location_precision)
             files = {"files": ('image.jpg', val[0].read())}
             
         #Uncomment below and comment above if doing it from non application
