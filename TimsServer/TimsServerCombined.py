@@ -86,9 +86,13 @@ class User(Resource):
         
         if request.args.get("image") == "True":
             try:
-                sent_file = send_file("Graphs/" + str(lat) + "," + str(long) + "graph.png", "image/png")            
-            except(FileNotFoundError):
+                sent_file = send_file("Graphs/" + str(lat) + "," + str(long) + "graph.png", "image/png")         
+            #Occurs in python 2
+            except IOError:
                 sent_file = send_file("Graphs/NoGraph.png", "image/png")
+            #Occurs in python 3
+            except FileNotFoundError:
+                sent_file = send_file("Graphs/NoGraph.png", "image/png")                
             return sent_file
         
         #Find the server data and return it to the client
