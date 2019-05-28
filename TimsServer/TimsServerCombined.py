@@ -96,9 +96,6 @@ class User(Resource):
         data_list = []
         for line in data.split("\n"):
             data_list.append(line.split(","))
-        #Remove the last item if it is empty (trailing \n line in file)
-        if data_list[-1] == ['']:
-            data_list = data_list[:-1]
         #Remove header line and reverse list
         data_list = data_list[1:][::-1]
         #print("Person Location " + str(long) + " " + str(lat))
@@ -106,7 +103,7 @@ class User(Resource):
         lat_range, long_range = get_coor_range(lat, long, line_range, location_precision)
         #Iterate through the file checking if the locations match
         for line in data_list:
-            if float(line[-2]) in lat_range and float(line[-1]) in long_range:
+            if line != [''] and float(line[-2]) in lat_range and float(line[-1]) in long_range:
                 return line[3] + "," + convert_mil_to_twelve(line[2])
         return "No Line,Data"
 
