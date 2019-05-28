@@ -3,6 +3,7 @@ from flask_restful import Api, Resource, reqparse
 from flask import request
 from flask_cors import CORS
 from flask_cors import cross_origin
+from flask import send_file
 import signal
 import json
 import datetime
@@ -78,6 +79,13 @@ class User(Resource):
             os.kill(os.getpid(), signal.SIGINT)
         #Get the long and lat of the client
         lat, long = get_latlng(request, location_precision)
+        
+        if request.args.get("image") == "True":
+            try:
+                sent_file = send_file("Graphs/" + str(lat) + "," + str(long) + "graph.png", "image/png")            
+            except(FileNotFoundError):
+                sent_file = send_file("Graphs/NoGraph.png", "image/png")
+            return sent_file
         
         #Find the server data and return it to the client
         server_data = open(storage_file, 'r')  
