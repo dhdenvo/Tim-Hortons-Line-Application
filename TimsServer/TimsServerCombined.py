@@ -15,7 +15,7 @@ app = Flask(__name__)
 cors = CORS(app, origins="*")
 api = Api(app)
 
-def get_lnglat(request, precision):
+def get_latlng(request, precision):
     #Get the parameters from the request
     long = request.args.get("long")
     lat = request.args.get("lat")
@@ -24,17 +24,17 @@ def get_lnglat(request, precision):
     if not long or not lat or (long in def_long_range and lat in def_long_range) or \
        (not long.replace(".", "", 1).replace("-", "", 1).isdigit()) or (not lat.replace(".", "", 1).replace("-", "", 1).isdigit()):
         long, lat = def_long, def_lat
-    return round(float(long), precision), round(float(lat), precision)
+    return round(float(lat), precision), round(float(long), precision)
 
 #Create a radius around the longitude and latitude given
-def get_coor_range(long, lat, radius, precision):
+def get_coor_range(lat, long, radius, precision):
     #Create a list based on the radius and the precision for each longitude and latitude
     long_range = list(range(int(long * (10 ** precision) - radius), int(long * (10 ** precision) + radius)))
     lat_range = list(range(int(lat * (10 ** precision) - radius), int(lat * (10 ** precision) + radius)))
     #Make the ranges back into floats rather than large integers
     lat_range = [x / float(10 ** precision) for x in lat_range]
     long_range = [x / float(10 ** precision) for x in long_range]
-    return long_range, lat_range
+    return lat_range, long_range
 
 #Convert military time to twelve hour clock
 def convert_mil_to_twelve(military):
@@ -59,8 +59,8 @@ website = True
 auto_reset = True
 location_precision = 3
 #The location of 8200 Warden Lab
-def_long, def_lat = 43.849027, -79.339243
-def_long_range, def_lat_range = get_coor_range(def_long, def_lat, 3, location_precision)
+def_lat, def_long = 43.849027, -79.339243
+def_lat_range, def_long_range = get_coor_range(def_lat, def_long, 3, location_precision)
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -76,7 +76,7 @@ class User(Resource):
         if datetime.datetime.now().hour == 18 and auto_reset:
             os.kill(os.getpid(), signal.SIGINT)
         #Get the long and lat of the client
-        long, lat = get_lnglat(request, location_precision)
+        lat, long = get_latlng(request, location_precision)
         
         #Find the server data and return it to the client
         server_data = open(storage_file, 'r')  
@@ -94,10 +94,10 @@ class User(Resource):
         data_list = data_list[1:][::-1]
         #print("Person Location " + str(long) + " " + str(lat))
         #Create the ranges for the coordinates (with a radius of 3)
-        long_range, lat_range = get_coor_range(long, lat, 3, location_precision)
+        lat_range, long_range = get_coor_range(lat, long, 3, location_precision)
         #Iterate through the file checking if the locations match
         for line in data_list:
-            if float(line[-1]) in lat_range and float(line[-2]) in long_range:
+            if float(line[-2]) in lat_range and float(line[-1]) in long_range:
                 return line[3] + "," + convert_mil_to_twelve(line[2])
         return "No Line,Data"
 
@@ -128,7 +128,7 @@ class User(Resource):
         img_time = datetime.datetime.now()
         
         #Get long and lat of the client
-        long, lat = get_lnglat(request, location_precision)
+        lat, long = get_latlng(request, location_precision)
 
         #Get the values from the request
         val = list(request.files.values())
@@ -177,7 +177,7 @@ class User(Resource):
         if week_day == 7: 
             weekday -= 7
         
-        server_data = img_day_str + ",%d," % week_day + img_time_str + ",%d," % amount_in_line + str(long) + "," + str(lat)
+        server_data = img_day_str + ",%d," % week_day + img_time_str + ",%d," % amount_in_line + str(lat) + "," + str(long)
         
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
