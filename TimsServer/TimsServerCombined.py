@@ -149,10 +149,10 @@ class User(Resource):
             
             if len(val) == 4:
                 image = val[2]
-                lat, lng = get_latlng(request, location_precision, val[0], val[1])
+                lat, long = get_latlng(request, location_precision, val[0], val[1])
             else:
                 image = val[0]
-                lat, lng = get_latlng(request, location_precision, def_lat, def_long)
+                lat, long = get_latlng(request, location_precision, def_lat, def_long)
             
             #Compensate for any missing padding
             #Should not be required anymore but still good to keep to be safe
