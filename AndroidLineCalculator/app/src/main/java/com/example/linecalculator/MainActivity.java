@@ -15,6 +15,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.location.Location;
+import android.location.LocationManager;
+import android.content.Context;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -48,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private File file;
     private Uri file_uri;
     private static String server = "http://drv-ctp6.canlab.ibm.com:5000/data";
-    private String[] galleryPermissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private String[] galleryPermissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.ACCESS_FINE_LOCATION};
 
 
     @Override
@@ -180,8 +184,26 @@ public class MainActivity extends AppCompatActivity {
             HttpURLConnection con = null;
             BufferedReader reader = null;
 
+            //The string in which the url is going to be set to
+            String urlWithParams;
+
             try {
-                URL url = new URL(params[0]);
+                LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                //Get the latitude and longitude of the phone
+                double lng = location.getLongitude();
+                double lat = location.getLatitude();
+
+                //Set them as parameters by appending them to the url
+                urlWithParams = params[0] + "?lat=" + String.valueOf(lat) + "&long=" + String.valueOf(lng);
+            } catch (SecurityException e) {
+                //If the user denies the app's access to the location, do nothing to the url
+                urlWithParams = params[0];
+            }
+
+            try {
+                URL url = new URL(urlWithParams);
                 con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
 
