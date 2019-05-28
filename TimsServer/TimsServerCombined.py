@@ -58,9 +58,10 @@ website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
 website = True
 auto_reset = True
 location_precision = 3
+line_range = 1
 #The location of 8200 Warden Lab
 def_lat, def_long = 43.849027, -79.339243
-def_lat_range, def_long_range = get_coor_range(def_lat, def_long, 3, location_precision)
+def_lat_range, def_long_range = get_coor_range(def_lat, def_long, line_range, location_precision)
 
 # Create a URL route in the application for "/"
 @app.route('/')
@@ -93,8 +94,8 @@ class User(Resource):
         #Remove header line and reverse list
         data_list = data_list[1:][::-1]
         #print("Person Location " + str(long) + " " + str(lat))
-        #Create the ranges for the coordinates (with a radius of 3)
-        lat_range, long_range = get_coor_range(lat, long, 3, location_precision)
+        #Create the ranges for the coordinates (with a radius of line_range)
+        lat_range, long_range = get_coor_range(lat, long, line_range, location_precision)
         #Iterate through the file checking if the locations match
         for line in data_list:
             if float(line[-2]) in lat_range and float(line[-1]) in long_range:
