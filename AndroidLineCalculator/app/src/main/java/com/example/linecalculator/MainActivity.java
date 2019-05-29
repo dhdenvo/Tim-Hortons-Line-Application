@@ -3,6 +3,7 @@ package com.example.linecalculator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.location.Location;
 import android.location.LocationManager;
 import android.content.Context;
+import android.widget.ImageView;
 
 
 import com.android.volley.AuthFailureError;
@@ -47,12 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
     private Button button;
     private TextView p, lastUpdate;
+    private ImageView graph;
     private String encoded_string, image_name;
     private Bitmap bitmap;
     private File file;
     private Uri file_uri;
     private static String server = "http://drv-ctp6.canlab.ibm.com:5000/data";
-    private String[] galleryPermissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.ACCESS_FINE_LOCATION};
+    private String[] allPermissions = {android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.ACCESS_FINE_LOCATION};
 
 
     @Override
@@ -62,19 +65,21 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.camera);
         p = findViewById(R.id.people);
         lastUpdate = findViewById(R.id.wait);
+        graph = findViewById(R.id.graph);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
-        if (EasyPermissions.hasPermissions(getApplicationContext(), galleryPermissions)) {
+        if (EasyPermissions.hasPermissions(getApplicationContext(), allPermissions)) {
             Log.d("PERMISSIONS", "YAS QUEEN!");
 
         } else {
             EasyPermissions.requestPermissions(this, "Access for storage",
-                    101, galleryPermissions);
+                    101, allPermissions);
         }
 
         new JSONTask().execute(server);
+        new ImageTask().execute(server);
 
         Thread t = new Thread(){
             @Override
@@ -87,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 new JSONTask().execute(server);
+                                new ImageTask().execute(server);
                             }
                         });
 
@@ -258,10 +264,55 @@ public class MainActivity extends AppCompatActivity {
                 p.setText(r[0].replace("\"", ""));
                 lastUpdate.setText(r[1].replace("\"", ""));
             } catch (NullPointerException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
                 p.setText("Bad");
                 lastUpdate.setText("Connection");
             }
+
+        }
+    }
+
+    public class ImageTask extends AsyncTask<String, String, Bitmap> {
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            HttpURLConnection con = null;
+
+            //The string in which the url is going to be set to
+            String urlWithParams = getLocUrl(params[0]) + "&image=True";
+
+            try {
+                URL url = new URL(urlWithParams);
+                con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+
+                InputStream stream = con.getInputStream();
+
+                return BitmapFactory.decodeStream(stream);
+
+            } catch (MalformedURLException e) {
+                //e.printStackTrace();
+            } catch (IOException e) {
+                //e.printStackTrace();
+            } finally {
+                if (con != null) {
+                    con.disconnect();
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            if (result == null) {
+                Drawable noconnection = getResources().getDrawable( R.drawable.noconnection );
+                graph.setImageDrawable(noconnection);
+            } else {
+                graph.setImageBitmap(result);
+            }
+
 
         }
     }
