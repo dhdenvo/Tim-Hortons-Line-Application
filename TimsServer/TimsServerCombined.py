@@ -26,8 +26,8 @@ def get_latlng(request, precision, given_lat = None, given_long = None):
         lat = request.args.get("lat")
 
     #If one of the lat or long are not existent or they are in the radius of the default return the defaults
-    if not long or not lat or (long in def_long_range and lat in def_long_range) or \
-       (not long.replace(".", "", 1).replace("-", "", 1).isdigit()) or (not lat.replace(".", "", 1).replace("-", "", 1).isdigit()):
+    if not long or not lat or (not long.replace(".", "", 1).replace("-", "", 1).isdigit()) or \
+       (not lat.replace(".", "", 1).replace("-", "", 1).isdigit()) or (round(float(long), precision) in def_long_range and round(float(lat), precision) in def_long_range) :
         long, lat = def_long, def_lat
     return round(float(lat), precision), round(float(long), precision)
 
@@ -156,7 +156,7 @@ class User(Resource):
                 lat, long = get_latlng(request, location_precision, val[0], val[1])
             else:
                 image = val[0]
-                lat, long = get_latlng(request, location_precision, def_lat, def_long)
+                lat, long = get_latlng(request, location_precision, str(def_lat), str(def_long))
             
             #Compensate for any missing padding
             #Should not be required anymore but still good to keep to be safe
