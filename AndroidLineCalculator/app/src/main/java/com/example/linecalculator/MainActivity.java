@@ -203,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (SecurityException e) {
             //If the user denies the app's access to the location, do nothing to the url
             return url;
+        } catch (NullPointerException e) {
+            return url + "?";
         }
 
     }
