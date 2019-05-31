@@ -59,7 +59,7 @@ server_file = "server_data.dat"
 storage_file = "server_storage.csv"
 api_url = "https://p10a156.pbm.ihost.com/powerai-vision/api/dlapis/7342cc0c-85aa-46bb-994f-f438cddb212e"
 server_url = "http://127.0.0.1:5000/data"
-website_server_file = "../../../../var/www/html/TimsLine/server_data.dat"
+website_server_file = "../../../../var/www/html/TimsLine/"
 website = True
 auto_reset = True
 location_precision = 3
@@ -131,9 +131,24 @@ class User(Resource):
         #Writes the arguments to the server file for the website
         if website and data.split(",")[-2] == str(round(def_lat, location_precision)) and data.split(",")[-1] == str(round(def_long, location_precision)):
             basic_data = data.split(",")[3] + "," + convert_mil_to_twelve(data.split(",")[2])      
-            server_data = open(website_server_file, 'w')  
+            server_data = open(website_server_file + "server_data.dat", 'w')  
             server_data.write(basic_data)
             server_data.close()
+            
+            #Copy over the graph to the website folder
+            try:
+                tims_graph = open("Graphs/" + str(round(def_lat, location_precision)) + "," + str(round(def_long, location_precision)) + "graph.png", "rb")
+            #If there is no default graph, give the no graph sign (both excepts)
+            except IOError:
+                tims_graph = open("Graphs/NoGraph.png", "rb")
+            except FileNotFoundError:
+                tims_graph = open("Graphs/NoGraph.png", "rb")                
+            web_graph = open(website_server_file + "server_graph.png", "wb")
+            #Copy tims_graph to web_graph
+            web_graph.write(tims_graph.read())
+            web_graph.close()
+            tims_graph.close()
+            
         return data
 
     #Run when recieve a post rest api call
