@@ -129,7 +129,7 @@ class User(Resource):
         print(data)
         
         #Writes the arguments to the server file for the website
-        if website and data.split(",")[-2] == def_lat and data.split(",")[-1] == def_long:
+        if website and data.split(",")[-2] == str(round(def_lat, location_precision)) and data.split(",")[-1] == str(round(def_long, location_precision)):
             basic_data = data.split(",")[3] + "," + convert_mil_to_twelve(data.split(",")[2])      
             server_data = open(website_server_file, 'w')  
             server_data.write(basic_data)
