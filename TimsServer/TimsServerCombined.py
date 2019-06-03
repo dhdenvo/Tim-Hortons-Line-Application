@@ -80,7 +80,7 @@ class User(Resource):
         #If a get request is made when it is 6 pm, the server shuts down
         #This is done so after 6 pm, the server shuts down
         if request.args.get("kill") == "True" and auto_reset:
-            os.kill(os.getpid(), signal.SIGINT)
+            os.kill(os.getpid(), signal.SIGKILL)
         #Get the long and lat of the client
         lat, long = get_latlng(request, location_precision)
         
