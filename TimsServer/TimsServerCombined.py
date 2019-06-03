@@ -52,6 +52,10 @@ def convert_mil_to_twelve(military):
         hour -= 12
     #Return the twelve hour time
     return str(hour) + ":" + military.split(":")[1] + " " + twelve
+
+#Handle a given signal
+def signal_handler(a, b):
+    pass
     
 
 #Server information
@@ -67,6 +71,9 @@ line_range = 1
 #The location of 8200 Warden Lab
 def_lat, def_long = 43.849027, -79.339243
 def_lat_range, def_long_range = get_coor_range(def_lat, def_long, line_range, location_precision)
+
+#Set up the signal to be handled
+signal.signal(signal.SIGHUP, signal_handler)
 
 # Create a URL route in the application for "/"
 @app.route('/')
