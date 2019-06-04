@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Header -->
 <head>
-  <title>Tim Hortons Line - Markam IBM Lab</title>
+  <title>Tim Hortons Line - Markam IBM Lab: Warden</title>
   <link rel="shortcut icon" type="image/x-icon" href="sysicon.png">
   <link rel="apple-touch-icon" href="http://drive.google.com/uc?export=view&id=10QHeC2Ns1fVcPitwuIHiPDYHz0wWAd7u">
 
-<style>
 
-body {
-	background-color: #c7f2a7;
-	padding: 20px;
-} 
-.container {
-	background-color: #e2fadb;
+<style>
+body{
+  /* width: 100%; */
+  height: auto;
+  margin: 12px;
+  padding: 0px;
+  font-family: Georgia;
+  background: url("wood.jpg");
 }
+
+.banner{
+  position: relative;
+  height: 25vh;
+  overflow: hidden;
+  background: linear-gradient(#000000, transparent,transparent, #cfebdf), url("timline2.png") no-repeat center;
+  background-size: cover;
+}
+
 .top {
 	background-color: #cfebdf;
-	padding: 1px;
-	font-size: 25px;
+	padding: 20px;
 }
+
 .middle {
 	text-align: center;
 	padding-bottom: 25px;
+  background-color: #e2fadb;
 }
 
-img {  
+.footer{
+  background-color: #cfebdf;
+  padding: 20px;
+  background: #cfebdf;
+  /* background: linear-gradient(#cfebdf, #000000, transparent) */
+}
+
+#title{
+  font-size: 50px;
+  padding: 0;
+  line-height: 0px;
+}
+
+#subtite {
+    line-height: 0px;
+}
+
+#graph {
  	width: 30%;
   	display: block;
 	margin-left: auto;
@@ -35,41 +63,22 @@ img {
 	padding: 16px;
 }
 
-.button {
-	font-size: 24px;
-	padding: 10px 20px;
-	border-radius: 6px;
-	border: 2px solid #696969;
-	-webkit-transition-duration: 0.4s; /* Safari */
-  	transition-duration: 0.4s;
-	/*box-shadow: 0 4px #999;*/
+#line,#time{
+  font-size: 30px;
+  line-height: 0px;
+  font-style: italic;
 }
-
-.button:hover {
-	background-color: #95bf8f;
-	color: white;
-	cursor: pointer;
-}
-
-.button:active {
-	background-color: #5f634f;
-	/*box-shadow: 0 1px #666;
-	transform: translateY(3px);*/
-}
-
 </style>
 
 </head>
 
 
 <!-- Body -->
-<div class='container'>
 <body onload="update()">
 
 <script>
 var line = 0;
 var time = "";
-
 function getData() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -90,34 +99,34 @@ function getData() {
 	xhttp.open("GET", "server_data.dat", true);
 	xhttp.send();
 }
-
 function update() {
 	getData();
 	setInterval(getData, 4800);
 }
-
 </script>
-
+<div class = "banner">
+  <p></p>
+</div>
 <div class='top'>
-	<h1 align="middle"> Tim Hortons Line</h1>
+	<h1 align="middle" id ="title">Tim's Line</h1>
+  <p align="middle" id ="subtite">Powered by IBM Power AI Vision</p>
 </div>
 
 <div class='middle'>
-	
-	<image src="server_graph.png"> </image>
-	
-	<h1>
-		The amount of people in line is:
-		<p id="line"></p>
-		This was recorded at:
-		<p id="time"></p>
-	</h1>
+
+	<image src="server_graph.png" id="graph"> </image>
+
+	<h2>Number of people in line:</h2>
+	<p id="line"></p>
+	<h2>Recorded at:</h2>
+	<p id="time"></p>
 	<!-- <button class="button button" onclick="getData()">Update Line</button> -->
 
 </div>
-
-</body>
+<div class="footer">
+  <p></p>
 </div>
+</body>
 
 </meta>
 </html>
