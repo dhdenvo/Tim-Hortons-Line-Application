@@ -49,7 +49,8 @@ def convert_mil_to_twelve(military):
     twelve = "AM"
     if hour >= 12:
         twelve = "PM"
-        hour -= 12
+        if hour != 12:
+            hour -= 12
     #Return the twelve hour time
     return str(hour) + ":" + military.split(":")[1] + " " + twelve
 
