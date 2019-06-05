@@ -67,6 +67,7 @@ server_url = "http://127.0.0.1:5000/data"
 website_server_file = "../../../../var/www/html/TimsLine/"
 website = True
 auto_reset = True
+save_image = True
 location_precision = 3
 line_range = 1
 #The location of 8200 Warden Lab
@@ -200,11 +201,6 @@ class User(Resource):
         #Uncomment below and comment above if doing it from non application
         #files = request.files
 
-        #Save the photo (comment out normally)
-        '''f = open("image.jpg", "wb")
-	f.write(image)
-	f.close()'''
-
         #Sends an api call to AI Vision
         req = requests.post(url = api_url, files=files, verify=False)       
         response = json.loads(req.text)
@@ -221,6 +217,12 @@ class User(Resource):
             weekday -= 7
         
         server_data = img_day_str + ",%d," % week_day + img_time_str + ",%d," % amount_in_line + str(lat) + "," + str(long)
+        
+        #Save the photo (comment out normally)
+        if save_image:
+            f = open("GraphData/" + server_data.replace(",", "_") + ".jpg", "wb")
+            f.write(files["files"][1])
+            f.close()        
         
         #Sends a put call to itself
         server_req = requests.put(url = server_url, params={"data": server_data})
