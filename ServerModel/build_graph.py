@@ -116,6 +116,9 @@ for l,d in enumerate(data):
                      ha='center', color='black', fontsize=30)
 
     plt.savefig("../TimsServer/Graphs/{}graph.png".format(lines[l]))
+    if lines == "43.849,-79.339":
+        plt.savefig("../../../../var/www/html/TimsLine/server_graph.png")
+    
     ##
 
     # Check if it is 5 P.M or later and save the days aggregated data
