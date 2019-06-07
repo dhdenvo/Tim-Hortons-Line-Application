@@ -75,8 +75,16 @@ user_data = pd.read_csv("../TimsServer/server_storage.csv")
 user_data['LatLon'] = user_data['Latitude'].astype(str)+","+user_data['Longitude'].astype(str)
 lines = user_data['LatLon'].unique()
 
-DATE = user_data['Date'][0]
-DAY = user_data['DayOfTheWeek'][0]
+now = datetime.datetime.now()
+DATE = "{}-{}-{}".format(now.year, now.month, now.day)
+
+weekday = now.weekday()
+if weekday == 6:
+    weekday = 0
+else:
+    weekday = weekday +1
+
+DAY = weekday
 
 data = []
 if not lines == []:
