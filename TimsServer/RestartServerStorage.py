@@ -21,3 +21,7 @@ if website:
     write_graph.write(read_graph.read())
     write_graph.close()
     read_graph.close()
+    
+    data = open("../../../../var/www/html/TimsLine/server_data.dat", "w")
+    data.write("0,No Data Recorded Today Yet")
+    data.close()
